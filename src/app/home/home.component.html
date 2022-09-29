@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="user-info my-3 pb-2">
+      <h2 class="row text-center">
+        <div class="col-10">Employee Details</div>
+        <div class="col-2">
+          <button class="btn btn-warning">
+            <i class="fa-regular fa-pen-to-square"></i>&nbsp;Edit
+          </button>
+        </div>
+      </h2>
+      <hr />
+      <table class="table table-striped">
+        <tr>
+          <td width="50%">Full Name :</td>
+          <td>MOHAMMED SHAMIL</td>
+        </tr>
+        <tr>
+          <td>Emp ID :</td>
+          <td>3745</td>
+        </tr>
+        <tr>
+          <td>Designation :</td>
+          <td>Associate Engineer</td>
+        </tr>
+        <tr>
+          <td>Manager :</td>
+          <td>Vimal Mohan</td>
+        </tr>
+      </table>
+    </div>
+    <div class="row mt-5 g-3">
+      <div class="col-md-3">
+        <a
+          class="card d-flex justify-content-center align-items-center"
+          [routerLink]="['passwords']"
+        >
+          <i class="fa-solid fa-key fs-3 mb-3"></i>
+          Password Manager
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a
+          class="card d-flex justify-content-center align-items-center"
+          [routerLink]="['notes']"
+        >
+          <i class="fa-regular fa-note-sticky fs-3 mb-3"></i>
+          Notes
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a
+          class="card d-flex justify-content-center align-items-center"
+          [routerLink]="['tasks']"
+        >
+          <i class="fa-solid fa-list-check fs-3 mb-3"></i>
+          Tasks
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a
+          class="card d-flex justify-content-center align-items-center"
+          [routerLink]="['reminders']"
+        >
+          <i class="fa-solid fa-bell fs-3 mb-3"></i>
+          Reminders
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

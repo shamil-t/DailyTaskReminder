@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="note-container p-0">
+      <div class="row p-0 m-0 h-100">
+        <div class="col-md-4 col-sm-4 p-0 m-0">
+          <div class="notes-list p-0">
+            <div class="notes-header px-3">
+              <span class="fw-bold">Notes</span>
+              <button
+                type="button"
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#modalId"
+              >
+                <i class="fa-solid fa-notes-medical"></i> Add Task
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-4 p-0 m-0">
+          <div class="note-display-container">
+            <div class="note-header px-3">
+              <span class="fw-bold">Notes</span>
+            </div>
+            <div class="note"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add-note-container"></div>
+  </div>
+</div>
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+  class="modal fade"
+  id="modalId"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Add Task</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="note-editor">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="Label"
+              id="Label"
+              placeholder="Add note title"
+            />
+            <label for="floatingLabel">Note Title</label>
+          </div>
+
+          <div class="NgxEditor__Wrapper editor">
+            <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+            <ngx-editor
+              [editor]="editor"
+              [ngModel]="html"
+              [disabled]="false"
+              [placeholder]="'Type here...'"
+            ></ngx-editor>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">SAVE</button>
+      </div>
+    </div>
+  </div>
+</div>
