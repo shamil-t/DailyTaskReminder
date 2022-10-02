@@ -26,7 +26,7 @@ export class TasksComponent implements OnInit {
 
   addTask() {
     if (this.Tasks.length > 0)
-      this.newTask.id = this.Tasks[this.Tasks.length-1].id + 1;
+      this.newTask.id = this.Tasks[this.Tasks.length - 1].id + 1;
     else this.newTask.id = 1;
     if (this.newTask.title != '') this.Tasks.push(this.newTask);
     this.newTask = { id: 0, title: '', completed: false };
@@ -45,7 +45,7 @@ export class TasksComponent implements OnInit {
 
   delTask(id: number) {
     this.Tasks = this.Tasks.filter((task) => {
-      task.id !== id;
+      return task.id != id;
     });
     localStorage.setItem('tasks', JSON.stringify(this.Tasks));
   }

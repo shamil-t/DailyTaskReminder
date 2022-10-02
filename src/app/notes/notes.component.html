@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="container">
-    <div class="note-container p-0">
+    <div class="note-container p-0 m-2">
       <div class="row p-0 m-0 h-100">
         <div class="col-md-4 col-sm-4 p-0 m-0">
           <div class="notes-list p-0">
@@ -15,6 +15,15 @@
                 <i class="fa-solid fa-notes-medical"></i> Add Task
               </button>
             </div>
+            <div class="note-list-container">
+              <ul>
+                <li *ngFor="let n of notes">
+                  <button class="btn" (click)="setNote(n)">
+                    {{ n.title }}
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="col-md-8 col-sm-4 p-0 m-0">
@@ -22,7 +31,9 @@
             <div class="note-header px-3">
               <span class="fw-bold">Notes</span>
             </div>
-            <div class="note"></div>
+            <div class="note">
+              <div class="_note" [innerHtml]="selectedNote?.html"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -52,6 +63,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          #closeModal
         ></button>
       </div>
       <div class="modal-body">
@@ -62,6 +74,7 @@
               class="form-control"
               name="Label"
               id="Label"
+              [(ngModel)]="note.title"
               placeholder="Add note title"
             />
             <label for="floatingLabel">Note Title</label>
@@ -71,7 +84,7 @@
             <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
             <ngx-editor
               [editor]="editor"
-              [ngModel]="html"
+              [(ngModel)]="note.html"
               [disabled]="false"
               [placeholder]="'Type here...'"
             ></ngx-editor>
@@ -79,7 +92,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">SAVE</button>
+        <button type="button" class="btn btn-success" (click)="saveNote()">
+          SAVE
+        </button>
       </div>
     </div>
   </div>
