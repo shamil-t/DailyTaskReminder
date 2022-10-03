@@ -21,11 +21,17 @@
                   <button class="btn text-dark fs-5" (click)="setNote(n)">
                     {{ n.title }}
                   </button>
-                  <button class="btn btn-danger mx-3 text-white">
+                  <button
+                    class="btn btn-danger mx-3 text-white"
+                    (click)="delNote(n.id)"
+                  >
                     <span class="fas fa-trash"></span>
                   </button>
                 </li>
               </ul>
+              <div class="no-notes mx-1">
+                <span class="fs-6 text-muted">No Notes Added</span>
+              </div>
             </div>
           </div>
         </div>
@@ -42,7 +48,7 @@
               *ngIf="!selectedNote"
             >
               <i class="fa-solid fa-triangle-exclamation fs-1 text-warning"></i>
-              <span class="fw-bold fs-4 text-muted">NO Notes Selected...!</span>
+              <span class="fw-bold fs-4 text-muted">No Notes Selected...!</span>
             </div>
           </div>
         </div>
