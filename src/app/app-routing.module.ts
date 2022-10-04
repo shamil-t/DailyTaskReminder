@@ -32,6 +32,7 @@ const routes: Routes = [
     path: 'home/vault',
     component: VaultComponent,
   },
+  { path: '*', redirectTo: 'home' },
 ];
 
 @NgModule({
