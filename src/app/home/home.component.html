@@ -1,10 +1,14 @@
 <div class="container-fluid">
   <div class="container">
-    <div class="user-info my-3 pb-2">
+    <div class="user-info my-2 pb-2">
       <h2 class="row text-center">
         <div class="col-10">Employee Details</div>
         <div class="col-2">
-          <button class="btn btn-warning">
+          <button
+            class="btn btn-warning"
+            data-bs-toggle="modal"
+            data-bs-target="#modalId"
+          >
             <i class="fa-regular fa-pen-to-square"></i>&nbsp;Edit
           </button>
         </div>
@@ -13,23 +17,28 @@
       <table class="table table-striped">
         <tr>
           <td width="50%">Full Name :</td>
-          <td>MOHAMMED SHAMIL</td>
+          <td>{{ user.name || "full_name" }}</td>
         </tr>
         <tr>
           <td>Emp ID :</td>
-          <td>3745</td>
+          <td>{{ user.empID || "employee_id" }}</td>
         </tr>
         <tr>
           <td>Designation :</td>
-          <td>Associate Engineer</td>
+          <td>{{ user.designation || "designation" }}</td>
         </tr>
         <tr>
           <td>Manager :</td>
-          <td>Vimal Mohan</td>
+          <td>
+            {{ user.manager.name || "manager_name" }}
+            <span class="text-primary text-muted">
+              ({{ user.manager.email || "manager_email" }})
+            </span>
+          </td>
         </tr>
       </table>
     </div>
-    <div class="row mt-5 g-3">
+    <div class="row mt-4 g-3">
       <div class="col-md-3">
         <a
           class="card d-flex justify-content-center align-items-center"
@@ -65,6 +74,130 @@
           <i class="fa-solid fa-bell fs-3 mb-3"></i>
           Reminders
         </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalId"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Edit Employee Details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row justify-content-center align-items-center g-2">
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="formId1"
+                  placeholder="full name"
+                  [(ngModel)]="user.name"
+                />
+                <label for="formId1">Full Name</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="emial"
+                  id="formId1"
+                  placeholder="email"
+                  [(ngModel)]="user.email"
+                />
+                <label for="formId1">Email</label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-floating mb-2">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="empID"
+                  id="formId1"
+                  placeholder="employee ID"
+                  [(ngModel)]="user.empID"
+                />
+                <label for="formId1">Employee ID</label>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="form-floating mb-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="designation"
+                  id="formId1"
+                  placeholder="designation"
+                  [(ngModel)]="user.designation"
+                />
+                <label for="formId1">Designation</label>
+              </div>
+            </div>
+            <caption>
+              Manager
+            </caption>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="designation"
+                  id="formId1"
+                  placeholder="designation"
+                  [(ngModel)]="user.manager.name"
+                />
+                <label for="formId1">Full Name</label>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="designation"
+                  id="formId1"
+                  placeholder="designation"
+                  [(ngModel)]="user.manager.email"
+                />
+                <label for="formId1">Email</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          #closeModal
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveData()">
+          Save
+        </button>
       </div>
     </div>
   </div>

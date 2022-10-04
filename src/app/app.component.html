@@ -1,5 +1,6 @@
 <nav class="navbar bg-dark">
   <div class="container">
+<<<<<<< HEAD
     <a class="navbar-brand" [routerLink]="['home']">
       <img
         src="https://www.orioninc.com/wp-content/themes/orion/dist/images/orion_innovation_logo_white.svg"
@@ -7,11 +8,18 @@
         width="160"
         height="30"
       />
+=======
+    <a class="navbar-brand" [routerLink]="'home'">
+      <span class="text-white fs-4">
+        <i class="fa-solid fa-cubes-stacked"> </i>
+      </span>
+      <span class="text text-warning">Daily Task Reminder</span>
+>>>>>>> 68b29b933b5b8602c81d1ef0432dc5a88df0afa5
     </a>
     <div class="d-flex align-items-center">
       <div class="d-flex flex-column align-items-end text-white px-2">
-        <span class="mid-text">MOHAMMED SHAMIL</span>
-        <span class="small-text">mohammed.sha@orioninc.com</span>
+        <span class="mid-text">{{ user.name || "USER NAME" }}</span>
+        <span class="small-text">{{ user.email || "user_email" }}</span>
       </div>
       <img
         src="../assets/images/icon/user.png"
