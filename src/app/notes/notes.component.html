@@ -18,21 +18,37 @@
             <div class="note-list-container">
               <ul>
                 <li *ngFor="let n of notes">
-                  <button class="btn" (click)="setNote(n)">
+                  <button class="btn text-dark fs-5" (click)="setNote(n)">
                     {{ n.title }}
+                  </button>
+                  <button
+                    class="btn btn-danger mx-3 text-white"
+                    (click)="delNote(n.id)"
+                  >
+                    <span class="fas fa-trash"></span>
                   </button>
                 </li>
               </ul>
+              <div class="no-notes mx-1">
+                <span class="fs-6 text-muted">No Notes Added</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-md-8 col-sm-4 p-0 m-0">
           <div class="note-display-container">
             <div class="note-header px-3">
-              <span class="fw-bold">Notes</span>
+              <span class="fw-bold">{{ selectedNote?.title }}</span>
             </div>
-            <div class="note">
-              <div class="_note" [innerHtml]="selectedNote?.html"></div>
+            <div class="note" *ngIf="selectedNote">
+              <div class="_note" [innerHtml]="selectedNote.html"></div>
+            </div>
+            <div
+              class="d-flex flex-column w-100 text-center h-100 align-items-center justify-content-center"
+              *ngIf="!selectedNote"
+            >
+              <i class="fa-solid fa-triangle-exclamation fs-1 text-warning"></i>
+              <span class="fw-bold fs-4 text-muted">No Notes Selected...!</span>
             </div>
           </div>
         </div>

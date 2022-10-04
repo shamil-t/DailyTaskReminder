@@ -47,4 +47,11 @@ export class NotesComponent implements OnInit {
   setNote(n: Note) {
     this.selectedNote = n;
   }
+
+  delNote(id: number) {
+    this.notes = this.notes.filter((n) => {
+      return n.id != id;
+    });
+    localStorage.setItem('notes', JSON.stringify(this.notes));
+  }
 }

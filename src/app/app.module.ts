@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { NotesComponent } from './notes/notes.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { ReminderComponent } from './reminder/reminder.component';
+import { VaultComponent } from './vault/vault.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { NgxEditorModule } from 'ngx-editor';
     LoginComponent,
     TasksComponent,
     NotesComponent,
+    ReminderComponent,
+    VaultComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NgxEditorModule],
   providers: [],

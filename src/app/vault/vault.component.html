@@ -1,0 +1,149 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="table-responsive">
+      <div
+        class="header my-3 d-flex flex-row justify-content-between align-items-center"
+      >
+        <div class="h3">Password Vault</div>
+        <button
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalId"
+        >
+          <i class="fas fa-plus"></i> Add Password
+        </button>
+      </div>
+
+      <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let v of vaults; let i = index">
+            <td scope="row">{{ i + 1 }}</td>
+            <td>{{ v.name }}</td>
+            <td>{{ v.uName }}</td>
+            <td>
+              <input
+                class="pwd bg-transparent"
+                type="password"
+                [value]="v.password"
+                disabled
+              />
+            </td>
+            <td>
+              <button
+                class="btn btn-success mx-1"
+                id="cpcb"
+                (click)="copyPwd(v.password)"
+              >
+                <i class="fa-regular fa-clipboard"></i>
+              </button>
+              <button class="btn btn-danger mx-1" (click)="delPwd(v.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot *ngIf="vaults.length == 0">
+          No Passwords
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalId"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Add Password</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeModal
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              id="formId1"
+              placeholder="Name"
+              [(ngModel)]="vault.name"
+            />
+            <label for="formId1">Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="uName"
+              id="formId2"
+              placeholder="Username"
+              [(ngModel)]="vault.uName"
+            />
+            <label for="formId1">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="password"
+              id="formId3"
+              placeholder="Password"
+              [(ngModel)]="vault.password"
+            />
+            <label for="formId1">Password</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-success" (click)="addToVault()">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="toast align-items-center bg-light position-fixed top-0 end-0 mt-5 p-0"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  id="liveToast"
+>
+  <div class="d-flex">
+    <div class="toast-body text-danger">{{ toastText }}</div>
+    <button
+      type="button"
+      class="btn-close me-2 m-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+      #closeToast
+    ></button>
+  </div>
+</div>
