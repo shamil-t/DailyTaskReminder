@@ -8,6 +8,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { VaultComponent } from './vault/vault.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
@@ -32,7 +33,7 @@ const routes: Routes = [
     path: 'home/vault',
     component: VaultComponent,
   },
-  { path: '*', redirectTo: 'home' },
+  {path:"*",redirectTo:"home",pathMatch:"full"}
 ];
 
 @NgModule({
