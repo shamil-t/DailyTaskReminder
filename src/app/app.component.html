@@ -6,12 +6,15 @@
       </span>
       <span class="text text-warning">Daily Task Reminder</span>
     </a>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center" *ngIf="showUserInfo">
       <div class="d-flex flex-column align-items-end text-white px-2">
         <span class="mid-text">{{ user.name || "USER NAME" }}</span>
         <span class="small-text">{{ user.email || "user_email" }}</span>
       </div>
-      <div class="dropdown dropstart">
+      <div class="user-icon text-white fs-4" *ngIf="!showUserMgrBtn">
+        <i class="fa-solid fa-user-tie"></i>
+      </div>
+      <div class="dropdown dropstart" *ngIf="showUserMgrBtn">
         <button
           class="btn text-white fs-5 dropdown-toggle outline-none border-none"
           type="button"

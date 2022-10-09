@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './types/user.type';
 
 @Component({
@@ -21,14 +21,25 @@ export class AppComponent implements OnInit {
     },
   };
 
+  showUserMgrBtn: boolean = false
+  showUserInfo: boolean = true
+
   //TODO
-  isLogedIn: boolean = true;
-  constructor(private router: Router) {}
+  isLogedIn: boolean = false;
+  constructor(private router: Router, private ar: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe((v) => {
+      let path = this.ar.snapshot.children[0]?.routeConfig?.path
+      if (path == 'home')
+        this.showUserMgrBtn = true
+      if (path == 'login')
+        this.showUserInfo = false
+
+    })
     if (this.isLogedIn) {
       //TODO
-      this.router.navigate(['home/reminder']);
+      this.router.navigate(['home']);
     } else {
       this.router.navigate(['login']);
     }

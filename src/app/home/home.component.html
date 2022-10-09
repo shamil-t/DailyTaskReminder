@@ -30,9 +30,9 @@
         <tr>
           <td>Manager :</td>
           <td>
-            {{ user.manager.name || "manager_name" }}
+            {{ user.manager?.name || "manager_name" }}
             <span class="text-primary text-muted">
-              ({{ user.manager.email || "manager_email" }})
+              ({{ user.manager?.email || "manager_email" }})
             </span>
           </td>
         </tr>
