@@ -3,32 +3,74 @@
     <div class="login-form">
       <div class="card">
         <form>
-          <div class="h3 text-center my-2 mb-3">Sign In</div>
+          <div class="h3 text-center my-2 mb-3">
+            <span *ngIf="signUp; else signIn">Sign Up</span>
+            <ng-template #signIn>Sign In</ng-template>
+          </div>
+          <div class="form-floating mb-3" *ngIf="signUp">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="full name"
+              name="name"
+              [(ngModel)]="register.name"
+            />
+            <label for="floatingInput">Full Name</label>
+          </div>
           <div class="form-floating mb-3">
             <input
               type="email"
               class="form-control"
               id="floatingInput"
               placeholder="name@example.com"
+              name="email"
+              [(ngModel)]="login.email"
             />
             <label for="floatingInput">Company Mail ID</label>
           </div>
-          <div class="form-floating">
+          <div class="form-floating mb-3">
             <input
               type="password"
               class="form-control"
               id="floatingPassword"
+              name="password"
               placeholder="Password"
+              [(ngModel)]="login.password"
             />
             <label for="floatingPassword">Password</label>
           </div>
+          <div class="form-floating" *ngIf="signUp">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword1"
+              placeholder="Password"
+              name="cofirm"
+              [(ngModel)]="register.confirm"
+            />
+            <label for="floatingPassword">Confirm Password</label>
+          </div>
           <div class="submit-btn my-3 d-flex justify-content-center">
-            <button type="button" class="btn">Sign In</button>
+            <button type="button" class="btn" (click)="onSignInSignUp()">
+              <span *ngIf="signUp; else signIn">Sign Up</span>
+              <ng-template class="text-white" #signIn>Sign In</ng-template>
+            </button>
           </div>
         </form>
         <div class="no-acct">
-          Don't have an account
-          <span class="sign-up"> <button class="btn p-0 m-0">Sign Up</button> </span>
+          <ng-container *ngIf="signUp; else elseTemplate">
+            Already have an account
+            <span class="sign-up">
+              <button class="btn p-0 m-0" (click)="onSignUp()">Sign In</button>
+            </span>
+          </ng-container>
+          <ng-template #elseTemplate>
+            Don't have an account
+            <span class="sign-up">
+              <button class="btn p-0 m-0" (click)="onSignUp()">Sign Up</button>
+            </span>
+          </ng-template>
         </div>
       </div>
     </div>
