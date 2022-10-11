@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
   showUserMgrBtn: boolean = false
   showUserInfo: boolean = true
 
-  //TODO
   isLogedIn: boolean = false;
   constructor(private router: Router, private ar: ActivatedRoute) { }
 
@@ -35,15 +34,18 @@ export class AppComponent implements OnInit {
         this.showUserMgrBtn = true
       if (path == 'login')
         this.showUserInfo = false
-
     })
+
+    let _user = JSON.parse(localStorage.getItem('user')!);
+    _user ? (this.user = _user) : '';
+
+    if (_user != null)
+      this.isLogedIn = true
     if (this.isLogedIn) {
-      //TODO
       this.router.navigate(['home']);
     } else {
       this.router.navigate(['login']);
     }
-    let _user = JSON.parse(localStorage.getItem('user')!);
-    _user ? (this.user = _user) : '';
+   
   }
 }
