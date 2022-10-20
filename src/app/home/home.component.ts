@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AlertComponent } from 'src/utils/alert/alert.component';
 import { User } from '../types/user.type';
 
 @Component({
@@ -9,36 +8,24 @@ import { User } from '../types/user.type';
 })
 export class HomeComponent implements OnInit {
   @ViewChild('closeModal') cm!: ElementRef;
-  @ViewChild(AlertComponent)
-  alert: AlertComponent = new AlertComponent();
-
-  manager: {
-    name: string;
-    email: string;
-  } = {
-      name: '',
-      email: ''
-    }
-  user: User = {
-    name: '',
-    email: '',
-    empID: 0,
-    designation: '',
-    manager: this.manager,
-  };
-
-
+  user: User;
 
   constructor() {
+    this.user = {
+      name: '',
+      email: '',
+      empID: 0,
+      designation: '',
+      manager: {
+        name: '',
+        email: '',
+      },
+    };
   }
 
   ngOnInit(): void {
     let _user = JSON.parse(localStorage.getItem('user')!);
     if (_user) this.user = _user;
-  }
-
-  ngAfterViewInit(): void {
-    // this.alert.show()
   }
 
   saveData() {

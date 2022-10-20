@@ -13,6 +13,8 @@ export class TasksComponent implements OnInit {
     title: '',
     completed: false,
     id: 0,
+    desc: '',
+    priority: 0,
   };
 
   constructor() {}
@@ -29,7 +31,13 @@ export class TasksComponent implements OnInit {
       this.newTask.id = this.Tasks[this.Tasks.length - 1].id + 1;
     else this.newTask.id = 1;
     if (this.newTask.title != '') this.Tasks.push(this.newTask);
-    this.newTask = { id: 0, title: '', completed: false };
+    this.newTask = {
+      id: 0,
+      title: '',
+      completed: false,
+      desc: '',
+      priority: 0,
+    };
 
     localStorage.setItem('tasks', JSON.stringify(this.Tasks));
   }

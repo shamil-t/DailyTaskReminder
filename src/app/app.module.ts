@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +11,7 @@ import { NotesComponent } from './notes/notes.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { ReminderComponent } from './reminder/reminder.component';
 import { VaultComponent } from './vault/vault.component';
-import { UtilsModule } from 'src/utils/utils.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,11 +23,14 @@ import { UtilsModule } from 'src/utils/utils.module';
     ReminderComponent,
     VaultComponent,
   ],
-  imports:
-    [BrowserModule, AppRoutingModule,
-      FormsModule, NgxEditorModule,
-      HttpClientModule, UtilsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    NgxEditorModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
